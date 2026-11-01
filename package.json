@@ -1,0 +1,30 @@
+{
+  "name": "bot-events-pokemon-go",
+  "version": "1.0.0",
+  "description": "Bot Discord d'annonces d'événements Pokémon GO (source : LeekDuck via ScrapedDuck, secours : leak-duck)",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:legacy-sqlite": "node --experimental-sqlite src/index.js",
+    "dry": "node scripts/dry-run.js",
+    "register": "node scripts/register-commands.js",
+    "test:reminders": "node scripts/test-reminders.js",
+    "test:commands": "node scripts/test-commands.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs"
+  },
+  "keywords": [
+    "discord",
+    "pokemon-go",
+    "bot",
+    "leekduck"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "node-cron": "^3.0.3"
+  }
+}

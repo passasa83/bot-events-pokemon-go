@@ -1,0 +1,16 @@
+# Dépendances
+node_modules/
+
+# Variables d'environnement (ne jamais publier le token)
+.env
+
+# Base de données locale
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Journaux et OS
+*.log
+.DS_Store
+Thumbs.db
