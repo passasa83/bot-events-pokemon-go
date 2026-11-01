@@ -321,7 +321,13 @@ export function replaceRotationItems(category, items) {
     INSERT INTO rotations (category, bucket, name, image, can_be_shiny, details, start_utc, end_utc, updated_at)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
+  // La source peut publier deux fois le même (bucket, nom) — la contrainte
+  // UNIQUE l'interdit : on garde la première occurrence et on ignore la suivante.
+  const seen = new Set();
   for (const it of items) {
+    const key = `${it.bucket ?? ''}\u0000${it.name}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
     stmt.run(
       category, it.bucket ?? '', it.name, it.image ?? null, toSql(Boolean(it.canBeShiny)),
       it.details ? JSON.stringify(it.details) : null,

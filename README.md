@@ -144,7 +144,7 @@ Commandes utiles :
    | *Install Branch* (`BRANCH`) | `main` | |
    | *User Uploaded Files* (`USER_UPLOAD`) | **off** (0) | Laisser Git cloner le dépôt. |
    | *Auto Update* | **on** (recommandé) | Récupère le dernier code à chaque démarrage. |
-   | *JS file* (`JS_FILE`) | **`src/index.js`** | ⚠️ Valeur par défaut `index.js` : le bot n'a **pas** de `index.js` à la racine, il faut corriger sinon le serveur plante au démarrage. |
+   | *JS file* (`JS_FILE`) | `index.js` (par défaut) ou `src/index.js` | Les deux fonctionnent : `index.js` à la racine délègue au vrai point d'entrée `src/index.js`. |
    | *Git Username* / *Git Access Token* | vides | Dépôt public. |
    | *Packages* | vide | `discord.js` et `node-cron` sont déclarés dans `package.json` et installés par l'installation automatique. |
    | *Uninstall Node packages* | vide | |
