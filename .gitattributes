@@ -1,0 +1,8 @@
+# Fin de ligne LF partout : le bot tourne sur un hôte Linux (Wispbyte).
+* text=auto eol=lf
+
+# Binaires
+*.png binary
+*.jpg binary
+*.ico binary
+*.db binary
