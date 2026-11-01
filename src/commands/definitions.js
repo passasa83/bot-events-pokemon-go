@@ -60,7 +60,7 @@ export function commandDefinitions() {
     .addSubcommand((s) => s
       .setName('channel')
       .setDescription('Définit le salon des notifications d’événements')
-      .addChannelOption((o) => o.setName('salon').setDescription('Salon de destination').addChannelTypes(ChannelType.GuildText).setRequired(true)))
+      .addChannelOption((o) => o.setName('salon').setDescription('Salon de destination').addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement).setRequired(true)))
     .addSubcommand((s) => s
       .setName('role')
       .setDescription('Définit le rôle à mentionner (sans option : aucun rôle)')
@@ -68,7 +68,7 @@ export function commandDefinitions() {
     .addSubcommand((s) => s
       .setName('rotations-channel')
       .setDescription('Définit le salon des rotations (raids, œufs, vedettes)')
-      .addChannelOption((o) => o.setName('salon').setDescription('Salon des rotations').addChannelTypes(ChannelType.GuildText)))
+      .addChannelOption((o) => o.setName('salon').setDescription('Salon des rotations').addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)))
     .addSubcommand((s) => {
       s.setName('types').setDescription('Choisit les types d’événements et rotations notifiés');
       s.addBooleanOption((o) => o.setName('reset').setDescription('Réinitialiser (tous les types)'));
