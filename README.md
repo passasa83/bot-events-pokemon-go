@@ -135,18 +135,33 @@ Commandes utiles :
 1. Créez un compte sur **wispbyte.com** et un **serveur de type bot Discord (Node.js)**.
 2. Dans le panel, notez la **mémoire** et le **disque** de l'offre gratuite
    (≈ 512 Mo / 1 Go selon les retours d'utilisateurs — à confirmer au moment du déploiement).
-3. Téléversez le projet (gestionnaire de fichiers du panel, ou dépôt Git si disponible) :
-   il suffit des fichiers du projet **hors `node_modules`**.
-4. Renseignez les **variables d'environnement** dans le panel
-   (`DISCORD_TOKEN`, `DISCORD_CLIENT_ID`, `BOT_OWNER_ID`, `TEST_GUILD_ID`, …).
-   Ne placez jamais le token dans un fichier versionné.
-5. Onglet **Startup** :
-   - *Startup Command* : `npm start`
-   - *Docker Image* : `nodejs_24`
-6. Onglet **Console** : tapez `npm install` puis démarrez le serveur. Vérifiez le message
-   `Connecté en tant que …`.
-7. Invitez le bot avec le lien OAuth2 (voir §2).
-8. Dans votre serveur : `/setup channel <salon>` puis, si vous voulez un ping,
+3. Onglet **Startup** (déploiement depuis GitHub) :
+
+   | Champ (panel) | Valeur | Notes |
+   |---|---|---|
+   | *Image* (Docker image) | `nodejs_24` | Puis cliquer **Use this image**. |
+   | *Git Repo Address* (`GIT_ADDRESS`) | `https://github.com/passasa83/bot-events-pokemon-go` | Dépôt public : pas besoin d'identifiants Git. |
+   | *Install Branch* (`BRANCH`) | `main` | |
+   | *User Uploaded Files* (`USER_UPLOAD`) | **off** (0) | Laisser Git cloner le dépôt. |
+   | *Auto Update* | **on** (recommandé) | Récupère le dernier code à chaque démarrage. |
+   | *JS file* (`JS_FILE`) | **`src/index.js`** | ⚠️ Valeur par défaut `index.js` : le bot n'a **pas** de `index.js` à la racine, il faut corriger sinon le serveur plante au démarrage. |
+   | *Git Username* / *Git Access Token* | vides | Dépôt public. |
+   | *Packages* | vide | `discord.js` et `node-cron` sont déclarés dans `package.json` et installés par l'installation automatique. |
+   | *Uninstall Node packages* | vide | |
+
+   > Si la console affiche `Cannot find package 'discord.js'` au démarrage,
+   > ajoutez `discord.js node-cron` dans le champ *Packages* (l'œuf les réinstalle
+   > à chaque démarrage).
+
+4. **Variables d'environnement** : renseignez `DISCORD_TOKEN`, `DISCORD_CLIENT_ID`
+   (et si le panel le propose `BOT_OWNER_ID`, `TEST_GUILD_ID`, …). Si le panel ne
+   permet pas d'ajouter de variables libres, créez un fichier **`.env`** dans le
+   gestionnaire de fichiers avec les mêmes valeurs : le bot le lit automatiquement
+   (voir `.env.example`). Ne placez jamais le token dans un fichier versionné.
+5. Onglet **Console** : démarrez le serveur. L'installation `npm install` se fait
+   automatiquement ; vérifiez le message `Connecté en tant que …`.
+6. Invitez le bot avec le lien OAuth2 (voir §2).
+7. Dans votre serveur : `/setup channel <salon>` puis, si vous voulez un ping,
    `/setup role <rôle>`.
 
 ### Bonnes pratiques Wispbyte
